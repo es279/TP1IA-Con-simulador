@@ -1,0 +1,360 @@
+digraph g {
+node [shape = Mrecord];
+nodo0[label="{EO: 0|cost: 0.0|A: null}"]
+nodo1[label="{EO: 1|cost: 1240.0|A: GoEsquina5}"]
+nodo5[label="{EO: 5|cost: 2272.0|A: GoEsquina6|Posicion:\n5}"]
+nodo14[label="{EO: 14|cost: 3651.0|A: GoEsquina7|Posicion:\n6}"]
+nodo45[label="{EO: 45|cost: 5488.0|A: GoEsquina8|Posicion:\n7}"]
+
+nodo14 -> nodo45;
+nodo46[label="{EO: 46|cost: 4916.0|A: GoEsquina16|Posicion:\n7}"]
+
+nodo14 -> nodo46;
+
+nodo5 -> nodo14;
+nodo15[label="{EO: 15|cost: 3207.0|A: GoEsquina15|Posicion:\n6}"]
+nodo31[label="{EO: 31|cost: 4035.0|A: GoEsquina14|Posicion:\n15}"]
+nodo65[label="{EO: 65|cost: 4966.0|A: GoEsquina5|Posicion:\n14}"]
+
+nodo31 -> nodo65;
+nodo66[label="{EO: 66|cost: 4755.0|A: GoEsquina13|Posicion:\n14}"]
+nodo115[label="{EO: 115|cost: 5366.0|A: GoEsquina12|Posicion:\n13}"]
+
+nodo66 -> nodo115;
+nodo116[label="{EO: 116|cost: 5576.0|A: GoEsquina22|Posicion:\n13}"]
+
+nodo66 -> nodo116;
+
+nodo31 -> nodo66;
+
+nodo15 -> nodo31;
+nodo32[label="{EO: 32|cost: 4226.0|A: GoEsquina24|Posicion:\n15}"]
+nodo73[label="{EO: 73|cost: 5144.0|A: capturarInfectado|Posicion:\n24}"]
+
+nodo32 -> nodo73;
+nodo74[label="{EO: 74|cost: 5144.0|A: GoEsquina23|Posicion:\n24}"]
+
+nodo32 -> nodo74;
+nodo75[label="{EO: 75|cost: 5592.0|A: GoEsquina25|Posicion:\n24}"]
+
+nodo32 -> nodo75;
+
+nodo15 -> nodo32;
+
+nodo5 -> nodo15;
+
+nodo1 -> nodo5;
+
+nodo0 -> nodo1;
+nodo2[label="{EO: 2|cost: 942.0|A: GoEsquina13}"]
+nodo3[label="{EO: 3|cost: 1553.0|A: GoEsquina12|Posicion:\n13}"]
+nodo6[label="{EO: 6|cost: 2068.0|A: capturarInfectado|Posicion:\n12}"]
+nodo12[label="{EO: 12|cost: 2694.0|A: GoEsquina3|Posicion:\n12}"]
+nodo23[label="{EO: 23|cost: 3209.0|A: capturarInfectado|Posicion:\n3}"]
+nodo33[label="{EO: 33|cost: 3724.0|A: GoEsquina4|Posicion:\n3}"]
+nodo52[label="{EO: 52|cost: 4142.0|A: GoEsquina5|Posicion:\n4}"]
+nodo68[label="{EO: 68|cost: 4456.0|A: GoEsquina6|Posicion:\n5}"]
+nodo88[label="{EO: 88|cost: 4889.0|A: GoEsquina7|Posicion:\n6}"]
+
+nodo68 -> nodo88;
+nodo89[label="{EO: 89|cost: 4665.0|A: GoEsquina15|Posicion:\n6}"]
+nodo110[label="{EO: 110|cost: 4979.0|A: GoEsquina14|Posicion:\n15}"]
+
+nodo89 -> nodo110;
+nodo111[label="{EO: 111|cost: 4766.0|A: GoEsquina24|Posicion:\n15}"]
+
+nodo89 -> nodo111;
+
+nodo68 -> nodo89;
+
+nodo52 -> nodo68;
+
+nodo33 -> nodo52;
+nodo53[label="{EO: 53|cost: 4142.0|A: GoEsquina13|Posicion:\n4}"]
+nodo69[label="{EO: 69|cost: 4641.0|A: GoEsquina12|Posicion:\n13}"]
+nodo98[label="{EO: 98|cost: 5267.0|A: GoEsquina3|Posicion:\n12}"]
+
+nodo69 -> nodo98;
+nodo99[label="{EO: 99|cost: 5257.0|A: GoEsquina11|Posicion:\n12}"]
+
+nodo69 -> nodo99;
+
+nodo53 -> nodo69;
+nodo70[label="{EO: 70|cost: 4453.0|A: GoEsquina22|Posicion:\n13}"]
+nodo85[label="{EO: 85|cost: 4869.0|A: GoEsquina21|Posicion:\n22}"]
+
+nodo70 -> nodo85;
+nodo86[label="{EO: 86|cost: 4659.0|A: GoEsquina23|Posicion:\n22}"]
+nodo106[label="{EO: 106|cost: 4970.0|A: GoEsquina14|Posicion:\n23}"]
+
+nodo86 -> nodo106;
+nodo107[label="{EO: 107|cost: 4761.0|A: GoEsquina24|Posicion:\n23}"]
+nodo117[label="{EO: 117|cost: 4761.0|A: capturarInfectado|Posicion:\n24}"]
+
+nodo107 -> nodo117;
+nodo118[label="{EO: 118|cost: 4985.0|A: GoEsquina25|Posicion:\n24}"]
+
+nodo107 -> nodo118;
+
+nodo86 -> nodo107;
+
+nodo70 -> nodo86;
+nodo87[label="{EO: 87|cost: 4867.0|A: GoEsquina33|Posicion:\n22}"]
+
+nodo70 -> nodo87;
+
+nodo53 -> nodo70;
+
+nodo33 -> nodo53;
+
+nodo23 -> nodo33;
+
+nodo12 -> nodo23;
+nodo24[label="{EO: 24|cost: 3306.0|A: GoEsquina4|Posicion:\n3}"]
+nodo34[label="{EO: 34|cost: 3925.0|A: GoEsquina5|Posicion:\n4}"]
+nodo58[label="{EO: 58|cost: 4543.0|A: GoEsquina6|Posicion:\n5}"]
+nodo92[label="{EO: 92|cost: 5394.0|A: GoEsquina7|Posicion:\n6}"]
+
+nodo58 -> nodo92;
+nodo93[label="{EO: 93|cost: 5167.0|A: GoEsquina15|Posicion:\n6}"]
+
+nodo58 -> nodo93;
+
+nodo34 -> nodo58;
+
+nodo24 -> nodo34;
+nodo35[label="{EO: 35|cost: 3928.0|A: GoEsquina13|Posicion:\n4}"]
+nodo59[label="{EO: 59|cost: 4539.0|A: GoEsquina12|Posicion:\n13}"]
+nodo90[label="{EO: 90|cost: 5165.0|A: GoEsquina3|Posicion:\n12}"]
+
+nodo59 -> nodo90;
+nodo91[label="{EO: 91|cost: 5370.0|A: GoEsquina11|Posicion:\n12}"]
+
+nodo59 -> nodo91;
+
+nodo35 -> nodo59;
+nodo60[label="{EO: 60|cost: 4550.0|A: GoEsquina22|Posicion:\n13}"]
+nodo94[label="{EO: 94|cost: 5179.0|A: GoEsquina21|Posicion:\n22}"]
+
+nodo60 -> nodo94;
+nodo95[label="{EO: 95|cost: 5169.0|A: GoEsquina23|Posicion:\n22}"]
+
+nodo60 -> nodo95;
+nodo96[label="{EO: 96|cost: 5378.0|A: GoEsquina33|Posicion:\n22}"]
+
+nodo60 -> nodo96;
+
+nodo35 -> nodo60;
+
+nodo24 -> nodo35;
+
+nodo12 -> nodo24;
+
+nodo6 -> nodo12;
+nodo13[label="{EO: 13|cost: 2899.0|A: GoEsquina11|Posicion:\n12}"]
+nodo26[label="{EO: 26|cost: 3948.0|A: GoEsquina10|Posicion:\n11}"]
+nodo63[label="{EO: 63|cost: 4997.0|A: GoEsquina1|Posicion:\n10}"]
+
+nodo26 -> nodo63;
+nodo64[label="{EO: 64|cost: 5192.0|A: GoEsquina9|Posicion:\n10}"]
+
+nodo26 -> nodo64;
+
+nodo13 -> nodo26;
+nodo27[label="{EO: 27|cost: 3724.0|A: GoEsquina20|Posicion:\n11}"]
+nodo49[label="{EO: 49|cost: 4766.0|A: GoEsquina19|Posicion:\n20}"]
+
+nodo27 -> nodo49;
+nodo50[label="{EO: 50|cost: 4352.0|A: GoEsquina21|Posicion:\n20}"]
+nodo79[label="{EO: 79|cost: 4975.0|A: GoEsquina22|Posicion:\n21}"]
+
+nodo50 -> nodo79;
+
+nodo27 -> nodo50;
+nodo51[label="{EO: 51|cost: 4763.0|A: GoEsquina31|Posicion:\n20}"]
+
+nodo27 -> nodo51;
+
+nodo13 -> nodo27;
+
+nodo6 -> nodo13;
+
+nodo3 -> nodo6;
+nodo7[label="{EO: 7|cost: 2291.0|A: GoEsquina3|Posicion:\n12}"]
+nodo16[label="{EO: 16|cost: 2918.0|A: capturarInfectado|Posicion:\n3}"]
+nodo28[label="{EO: 28|cost: 3640.0|A: GoEsquina4|Posicion:\n3}"]
+nodo43[label="{EO: 43|cost: 4369.0|A: GoEsquina5|Posicion:\n4}"]
+nodo80[label="{EO: 80|cost: 5097.0|A: GoEsquina6|Posicion:\n5}"]
+
+nodo43 -> nodo80;
+
+nodo28 -> nodo43;
+nodo44[label="{EO: 44|cost: 4158.0|A: GoEsquina13|Posicion:\n4}"]
+nodo71[label="{EO: 71|cost: 4657.0|A: GoEsquina12|Posicion:\n13}"]
+nodo103[label="{EO: 103|cost: 5060.0|A: capturarInfectado|Posicion:\n12}"]
+
+nodo71 -> nodo103;
+nodo104[label="{EO: 104|cost: 5395.0|A: GoEsquina3|Posicion:\n12}"]
+
+nodo71 -> nodo104;
+nodo105[label="{EO: 105|cost: 5380.0|A: GoEsquina11|Posicion:\n12}"]
+
+nodo71 -> nodo105;
+
+nodo44 -> nodo71;
+nodo72[label="{EO: 72|cost: 4668.0|A: GoEsquina22|Posicion:\n13}"]
+nodo112[label="{EO: 112|cost: 5187.0|A: GoEsquina21|Posicion:\n22}"]
+
+nodo72 -> nodo112;
+nodo113[label="{EO: 113|cost: 5175.0|A: GoEsquina23|Posicion:\n22}"]
+
+nodo72 -> nodo113;
+nodo114[label="{EO: 114|cost: 5384.0|A: GoEsquina33|Posicion:\n22}"]
+
+nodo72 -> nodo114;
+
+nodo44 -> nodo72;
+
+nodo28 -> nodo44;
+
+nodo16 -> nodo28;
+
+nodo7 -> nodo16;
+nodo17[label="{EO: 17|cost: 3110.0|A: GoEsquina4|Posicion:\n3}"]
+nodo29[label="{EO: 29|cost: 4040.0|A: GoEsquina5|Posicion:\n4}"]
+nodo67[label="{EO: 67|cost: 5072.0|A: GoEsquina6|Posicion:\n5}"]
+
+nodo29 -> nodo67;
+
+nodo17 -> nodo29;
+nodo30[label="{EO: 30|cost: 3832.0|A: GoEsquina13|Posicion:\n4}"]
+nodo56[label="{EO: 56|cost: 4443.0|A: GoEsquina12|Posicion:\n13}"]
+nodo82[label="{EO: 82|cost: 4958.0|A: capturarInfectado|Posicion:\n12}"]
+
+nodo56 -> nodo82;
+nodo83[label="{EO: 83|cost: 5181.0|A: GoEsquina3|Posicion:\n12}"]
+
+nodo56 -> nodo83;
+nodo84[label="{EO: 84|cost: 5381.0|A: GoEsquina11|Posicion:\n12}"]
+
+nodo56 -> nodo84;
+
+nodo30 -> nodo56;
+nodo57[label="{EO: 57|cost: 4653.0|A: GoEsquina22|Posicion:\n13}"]
+nodo100[label="{EO: 100|cost: 5385.0|A: GoEsquina21|Posicion:\n22}"]
+
+nodo57 -> nodo100;
+nodo101[label="{EO: 101|cost: 5573.0|A: GoEsquina23|Posicion:\n22}"]
+
+nodo57 -> nodo101;
+nodo102[label="{EO: 102|cost: 5783.0|A: GoEsquina33|Posicion:\n22}"]
+
+nodo57 -> nodo102;
+
+nodo30 -> nodo57;
+
+nodo17 -> nodo30;
+
+nodo7 -> nodo17;
+
+nodo3 -> nodo7;
+nodo8[label="{EO: 8|cost: 2491.0|A: GoEsquina11|Posicion:\n12}"]
+nodo18[label="{EO: 18|cost: 3757.0|A: GoEsquina10|Posicion:\n11}"]
+nodo54[label="{EO: 54|cost: 5131.0|A: GoEsquina1|Posicion:\n10}"]
+
+nodo18 -> nodo54;
+nodo55[label="{EO: 55|cost: 5321.0|A: GoEsquina9|Posicion:\n10}"]
+
+nodo18 -> nodo55;
+
+nodo8 -> nodo18;
+nodo19[label="{EO: 19|cost: 3520.0|A: GoEsquina20|Posicion:\n11}"]
+nodo38[label="{EO: 38|cost: 4871.0|A: GoEsquina19|Posicion:\n20}"]
+
+nodo19 -> nodo38;
+nodo39[label="{EO: 39|cost: 4251.0|A: GoEsquina21|Posicion:\n20}"]
+nodo78[label="{EO: 78|cost: 5073.0|A: GoEsquina22|Posicion:\n21}"]
+
+nodo39 -> nodo78;
+
+nodo19 -> nodo39;
+nodo40[label="{EO: 40|cost: 4866.0|A: GoEsquina31|Posicion:\n20}"]
+
+nodo19 -> nodo40;
+
+nodo8 -> nodo19;
+
+nodo3 -> nodo8;
+
+nodo2 -> nodo3;
+nodo4[label="{EO: 4|cost: 1763.0|A: GoEsquina22|Posicion:\n13}"]
+nodo9[label="{EO: 9|cost: 2495.0|A: GoEsquina21|Posicion:\n22}"]
+nodo20[label="{EO: 20|cost: 3529.0|A: GoEsquina20|Posicion:\n21}"]
+nodo41[label="{EO: 41|cost: 4880.0|A: GoEsquina19|Posicion:\n20}"]
+
+nodo20 -> nodo41;
+nodo42[label="{EO: 42|cost: 4875.0|A: GoEsquina31|Posicion:\n20}"]
+
+nodo20 -> nodo42;
+
+nodo9 -> nodo20;
+
+nodo4 -> nodo9;
+nodo10[label="{EO: 10|cost: 2683.0|A: GoEsquina23|Posicion:\n22}"]
+nodo21[label="{EO: 21|cost: 3508.0|A: GoEsquina14|Posicion:\n23}"]
+nodo36[label="{EO: 36|cost: 4439.0|A: GoEsquina5|Posicion:\n14}"]
+nodo81[label="{EO: 81|cost: 5471.0|A: GoEsquina6|Posicion:\n5}"]
+
+nodo36 -> nodo81;
+
+nodo21 -> nodo36;
+nodo37[label="{EO: 37|cost: 4228.0|A: GoEsquina13|Posicion:\n14}"]
+nodo76[label="{EO: 76|cost: 4839.0|A: GoEsquina12|Posicion:\n13}"]
+
+nodo37 -> nodo76;
+nodo77[label="{EO: 77|cost: 5049.0|A: GoEsquina22|Posicion:\n13}"]
+
+nodo37 -> nodo77;
+
+nodo21 -> nodo37;
+
+nodo10 -> nodo21;
+nodo22[label="{EO: 22|cost: 3703.0|A: GoEsquina24|Posicion:\n23}"]
+nodo47[label="{EO: 47|cost: 4621.0|A: capturarInfectado|Posicion:\n24}"]
+nodo97[label="{EO: 97|cost: 5875.0|A: GoEsquina25|Posicion:\n24}"]
+
+nodo47 -> nodo97;
+
+nodo22 -> nodo47;
+nodo48[label="{EO: 48|cost: 5069.0|A: GoEsquina25|Posicion:\n24}"]
+
+nodo22 -> nodo48;
+
+nodo10 -> nodo22;
+
+nodo4 -> nodo10;
+nodo11[label="{EO: 11|cost: 2893.0|A: GoEsquina33|Posicion:\n22}"]
+nodo25[label="{EO: 25|cost: 3930.0|A: GoEsquina32|Posicion:\n33}"]
+nodo61[label="{EO: 61|cost: 4661.0|A: GoEsquina21|Posicion:\n32}"]
+nodo108[label="{EO: 108|cost: 5695.0|A: GoEsquina20|Posicion:\n21}"]
+
+nodo61 -> nodo108;
+nodo109[label="{EO: 109|cost: 5483.0|A: GoEsquina22|Posicion:\n21}"]
+
+nodo61 -> nodo109;
+
+nodo25 -> nodo61;
+nodo62[label="{EO: 62|cost: 5271.0|A: GoEsquina31|Posicion:\n32}"]
+
+nodo25 -> nodo62;
+
+nodo11 -> nodo25;
+
+nodo4 -> nodo11;
+
+nodo2 -> nodo4;
+
+nodo0 -> nodo2;
+
+
+}

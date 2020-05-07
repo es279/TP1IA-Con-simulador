@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="dist/IA2020 busqueda infectados COVID.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/faia"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
