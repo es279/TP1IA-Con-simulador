@@ -2,13 +2,16 @@ package utn.ia2020.tp.busquedainfectados.covid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Random;
 
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import utn.ia2020.tp.busquedainfectados.InterfaceUpdater;
 
 public class RobotcovidAgentState extends SearchBasedAgentState {
-
+	//Contador y constante para generar movimiento random en infectados
+	public static int contadorDePasos = 0;
+	public final static int FRECUENCIA_DESP_INFECT = 4;
 
 	//Lista de esquinas donde se encuentran los infectados y sensores activos
 	public ArrayList<Integer> listaInfectados = cargarInfectados();
@@ -17,7 +20,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	public ArrayList<Integer[]> listaBloqueosConocidos = new ArrayList<Integer[]>();
 	
 	//TODO cambiar esta lista de infectados (pone un infectado en la esquina 11 y otro en la 12)
-	private ArrayList<Integer> cargarInfectados() {
+	private static ArrayList<Integer> cargarInfectados() {
 		ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 		
 		listaInfectados.add(3);
@@ -216,7 +219,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
      * This map has a point of the world (0, 1, 2, ...) as key, and a collection
      * of successors of that point.
      */
-    private HashMap<String, Collection<String>> knownMap;
+    public static HashMap<String, Collection<String>> knownMap;
     private ArrayList<String[]> tramosRecorridos;
 
     public RobotcovidAgentState() {
@@ -310,7 +313,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        {"23", "14", "24", "22"},
 	        {"24", "25", "23"},
 	        {"25", "16", "26", "24"},
-	        {"26", "35", "17"},
+	        {"26", "36", "17"},
 	        
 	        
 	        {"27", "18", "37"},
@@ -672,6 +675,19 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 
 	public void setListaBloqueosConocidos(ArrayList<Integer[]> listaBloqueosConocidos) {
 		this.listaBloqueosConocidos = listaBloqueosConocidos;
+	}
+	
+	public void randomPosicionInfectados() {
+		for(int index = 0; index < listaInfectados.size(); index++) {
+			System.out.println("index: " + index + "; elemento: " + listaInfectados.get(index)+" ; sice: "+RobotcovidAgentState.knownMap.size());
+			ArrayList<String> sucesores = new ArrayList<String>( knownMap.get(listaInfectados.get(index).toString()) );
+			System.out.println("sucesor sice: "+ sucesores.size());
+			Integer random = 0;
+			//if(sucesores.size()-1>0)
+				random = new Random().ints(0, sucesores.size()).iterator().nextInt();
+			if(random != sucesores.size())
+				listaInfectados.set(index, Integer.parseInt(sucesores.get(random)));
+		}
 	}
 	
 }

@@ -73,7 +73,14 @@ public class irEsquina extends SearchAction {
         
     	RobotcovidAgentState agentState = (RobotcovidAgentState) ast;
     	RobotcovidEnvironmentState environmentState = (RobotcovidEnvironmentState) est;
-
+    	
+    	RobotcovidAgentState.contadorDePasos++;
+    	if(RobotcovidAgentState.contadorDePasos == RobotcovidAgentState.FRECUENCIA_DESP_INFECT) {
+    		agentState.randomPosicionInfectados();
+    		RobotcovidAgentState.contadorDePasos = 0;
+    		//TODO: Interface.
+    		InterfaceUpdater.repaintUbicacionInfectados(agentState.listaInfectados);
+    	}
     	System.out.println(",amsndlasnd"+est.toString());
     	
         ArrayList<String> successors = new ArrayList<String>(agentState.getSuccessors());

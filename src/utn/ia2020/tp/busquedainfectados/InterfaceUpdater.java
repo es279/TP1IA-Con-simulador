@@ -8,7 +8,7 @@ import utn.ia2020.tp.busquedainfectados.covid.RobotcovidAgentState;
 
 public class InterfaceUpdater {
 	private static MapDrawerController simulacionActual;
-	private final static int SLEEP_TIME = 100;
+	private final static int SLEEP_TIME = 1000;
 	
 	public static void actualizarUbicacionAgete(Esquina esq) {
 		Thread thre = new Thread() {
@@ -36,11 +36,11 @@ public class InterfaceUpdater {
 			}
 		};
 		thre.start();
-		try {
+		/*try {
 			Thread.sleep(SLEEP_TIME);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public static void repaintUbicacionInfectados(ArrayList<Integer> infectados) {
@@ -49,6 +49,7 @@ public class InterfaceUpdater {
 				Platform.runLater(new Runnable(){
 					@Override
 					public void run() {
+						simulacionActual.borrarInfectados();
 						for(Integer indexEsquinaInfectado : infectados) {
 							System.out.println("Esquina: "+simulacionActual+indexEsquinaInfectado);
 							Esquina esquinaInfect = RobotcovidAgentState.listaEsq.get(indexEsquinaInfectado);
@@ -60,11 +61,6 @@ public class InterfaceUpdater {
 			}
 		};
 		thre.start();
-		try {
-			Thread.sleep(SLEEP_TIME);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		
 	}
 	

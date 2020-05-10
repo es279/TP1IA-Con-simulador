@@ -3,6 +3,7 @@ package utn.ia2020.tp.busquedainfectados.covid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Random;
 
 import frsf.cidisi.faia.agent.situationcalculus.KnowledgeBase;
 import frsf.cidisi.faia.state.EnvironmentState;
@@ -21,17 +22,17 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 					Integer[] vec0 = new Integer[2];
 					vec0[0]=2;
 					vec0[1]=3;
-					listaBloqueos.add(vec0);
+					//listaBloqueos.add(vec0);
 					
 					Integer[] vec1 = new Integer[2];
 					vec1[0]=3;
 					vec1[1]=4;
-					listaBloqueos.add(vec1);
+					//listaBloqueos.add(vec1);
 					
 					Integer[] vec2 = new Integer[2];
 					vec2[0]=21;
 					vec2[1]=12;
-					listaBloqueos.add(vec2);
+					//listaBloqueos.add(vec2);
 					
 					//TODO: Interface. Pinta los bloqueos en la interface de simulacion
 					for(Integer[] bloqueo : listaBloqueos) {
@@ -42,10 +43,10 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 				}
 		
 		//Lista de esquinas donde se encuentran los infectados y sensores activos
-		public ArrayList<Integer> listaInfectados = cargarInfectados();
+		public static ArrayList<Integer> listaInfectados = cargarInfectados();
 				
 		//TODO cambiar esta lista de infectados (pone un infectado en la esquina 11 y otro en la 12)
-		private ArrayList<Integer> cargarInfectados() {
+		private static ArrayList<Integer> cargarInfectados() {
 			ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 			
 			listaInfectados.add(3);
@@ -235,7 +236,7 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 	     * This map has a point of the world (A, B, C, ...) as key, and a collection
 	     * of successors of that point.
 	     */
-	    private HashMap<String, Collection<String>> map;
+	    private static HashMap<String, Collection<String>> map;
 
 	    public static final String[][] POSITIONS = new String[][]{
 	    	
@@ -542,6 +543,6 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 			 }
 			 
 			 return lista;
-		 }
+		}
 	    
 }
