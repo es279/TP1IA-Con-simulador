@@ -12,6 +12,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	//Contador y constante para generar movimiento random en infectados
 	public static int contadorDePasos = 0;
 	public final static int FRECUENCIA_DESP_INFECT = 4;
+	public static int CANTIDAD_SENSORES = 0; 
 
 	//Lista de esquinas donde se encuentran los infectados y sensores activos
 	public ArrayList<Integer> listaInfectados = cargarInfectados();
@@ -678,13 +679,12 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	}
 	
 	public void randomPosicionInfectados() {
-		for(int index = 0; index < listaInfectados.size(); index++) {
+		for(int index = RobotcovidAgentState.CANTIDAD_SENSORES; index < listaInfectados.size(); index++) {
 			System.out.println("index: " + index + "; elemento: " + listaInfectados.get(index)+" ; sice: "+RobotcovidAgentState.knownMap.size());
 			ArrayList<String> sucesores = new ArrayList<String>( knownMap.get(listaInfectados.get(index).toString()) );
 			System.out.println("sucesor sice: "+ sucesores.size());
 			Integer random = 0;
-			//if(sucesores.size()-1>0)
-				random = new Random().ints(0, sucesores.size()).iterator().nextInt();
+			random = new Random().ints(0, sucesores.size()).iterator().nextInt();
 			if(random != sucesores.size())
 				listaInfectados.set(index, Integer.parseInt(sucesores.get(random)));
 		}

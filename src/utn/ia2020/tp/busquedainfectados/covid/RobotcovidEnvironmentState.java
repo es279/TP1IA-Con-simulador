@@ -49,7 +49,11 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 		private static ArrayList<Integer> cargarInfectados() {
 			ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 			
+			//Seteamos los sensores activados al principio de la lista
 			listaInfectados.add(3);
+			RobotcovidAgentState.CANTIDAD_SENSORES = listaInfectados.size();
+			
+			//Seteamos los infectados (móviles)
 			listaInfectados.add(12);
 			listaInfectados.add(24);
 			

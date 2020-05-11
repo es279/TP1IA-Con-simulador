@@ -53,6 +53,7 @@ public class MapDrawerController implements Initializable {
     private ImageView agent;
     private HashMap<Integer,ImageView> infectados = new HashMap<Integer,ImageView>();
     private HashMap<Integer,ImageView> infectadosAtrapados = new HashMap<Integer,ImageView>();
+    private HashMap<Integer,ImageView> sensoresActivados = new HashMap<Integer,ImageView>();
     private HashMap<Integer,ImageView> bloqueosTotales = new HashMap<Integer,ImageView>();
     private HashMap<Integer,ImageView> bloqueosAgente = new HashMap<Integer,ImageView>();
     
@@ -96,6 +97,23 @@ public class MapDrawerController implements Initializable {
     	infectados.clear();
     }
     
+    public void agregarSensor(Integer idEsquina, Double newXPosition, Double newYPosition){
+    	if(sensoresActivados.get(idEsquina)!=null)
+    		return;
+    	//TODO modificar constantes
+    	ImageView sensorActivo = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/sensor_activado.png"));
+    	sensorActivo.setFitWidth(INFECT_IMG_W);
+    	sensorActivo.setFitHeight(INFECT_IMG_H);
+    	sensorActivo.relocate(ORIGEN_X_PX-newXPosition*0.7-INFECT_IMG_W/2, ORIGEN_Y_PX-newYPosition*0.7-INFECT_IMG_H);
+        this.sensoresActivados.put(idEsquina,sensorActivo);
+        this.panDrawer.getChildren().add(sensorActivo);
+    }
+    
+	public void borrarSensor(int idEsquina) {
+		if(sensoresActivados.get(idEsquina)!=null)
+			sensoresActivados.get(idEsquina).setImage( new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/sensor_desactivado.png") );
+	}
+    
     public void agregarCapturado(Integer idEsquina, Double newXPosition, Double newYPosition){
     	if(infectadosAtrapados.get(idEsquina)!=null)
     		return;
@@ -106,6 +124,7 @@ public class MapDrawerController implements Initializable {
         capturado.relocate(ORIGEN_X_PX-newXPosition*0.7-CAPTURED_IMG_W/2, ORIGEN_Y_PX-newYPosition*0.7-CAPTURED_IMG_H/2);
         this.infectadosAtrapados.put(idEsquina,capturado);
         this.panDrawer.getChildren().add(capturado);
+        this.agent.toFront();	//Hace que el agente quede por encima del capturado
     }
     
     /**

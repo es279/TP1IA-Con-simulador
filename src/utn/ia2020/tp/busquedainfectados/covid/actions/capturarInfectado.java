@@ -70,21 +70,32 @@ public class capturarInfectado extends SearchAction {
         if(agentState.getListaInfectados().contains(Integer.parseInt(posicionAgente))) {
         	Integer indiceEsquinaInfectado = agentState.getListaInfectados().indexOf(Integer.parseInt(posicionAgente));
         	agentState.getListaInfectados().remove(indiceEsquinaInfectado);
-
+        	
         	//TODO remover infectado de la lista de RobotcovidEnvironmentState
 
         	agentState.eliminarInfectado(indiceEsquinaInfectado);
         	environmentState.eliminarInfectado(indiceEsquinaInfectado);
         	
+        	//Si el infectado capturado estaba en uno de los sensores, entonces se debe descontar ese sensor de la cantidad de sensores activos
+        	if(indiceEsquinaInfectado < RobotcovidAgentState.CANTIDAD_SENSORES) {
+        		RobotcovidAgentState.CANTIDAD_SENSORES--;
+        		
+        		//TODO: Interface. Quita el infectado del sensor de la simulación grafica
+	        	Esquina esquinaActual = RobotcovidAgentState.listaEsq.get(Integer.parseInt(agentState.getPosition()));
+	        	InterfaceUpdater.borrarSensor(esquinaActual);
+        	}
+        	else {
+        		//TODO: Interface. Quita el infectado de la esquina de la simulación grafica
+	        	Esquina esquinaActual = RobotcovidAgentState.listaEsq.get(Integer.parseInt(agentState.getPosition()));
+	        	InterfaceUpdater.borrarInfectado(esquinaActual);
+	        	InterfaceUpdater.agregarCapturado(esquinaActual);
+        	}
+        	
+        	
         	if(agentState.getListaInfectados().isEmpty()) {
 
         		agentState.setEnBusqueda(false);
         	}
-        	
-        	//TODO: Interface. Quita el infectado de la esquina de la simulación grafica
-        	Esquina esquinaActual = RobotcovidAgentState.listaEsq.get(Integer.parseInt(agentState.getPosition()));
-        	InterfaceUpdater.borrarInfectado(esquinaActual);
-        	InterfaceUpdater.agregarCapturado(esquinaActual);
         	
         	return environmentState;
         }

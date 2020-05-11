@@ -43,6 +43,25 @@ public class InterfaceUpdater {
 		}*/
 	}
 	
+	public static void borrarSensor(Esquina esquinaInfect) {
+		Thread thre = new Thread() {
+			public void run(){
+				Platform.runLater(new Runnable(){
+					@Override
+					public void run() {
+						simulacionActual.borrarSensor(esquinaInfect.getIdEsquina());
+					}
+				});
+			}
+		};
+		thre.start();
+		/*try {
+			Thread.sleep(SLEEP_TIME);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
+	}
+	
 	public static void repaintUbicacionInfectados(ArrayList<Integer> infectados) {
 		Thread thre = new Thread() {
 			public void run(){
@@ -50,11 +69,17 @@ public class InterfaceUpdater {
 					@Override
 					public void run() {
 						simulacionActual.borrarInfectados();
-						for(Integer indexEsquinaInfectado : infectados) {
-							System.out.println("Esquina: "+simulacionActual+indexEsquinaInfectado);
-							Esquina esquinaInfect = RobotcovidAgentState.listaEsq.get(indexEsquinaInfectado);
+						for(int index=0; index < infectados.size();index++) {//Integer indexEsquinaInfectado : infectados) {
+							Esquina esquinaInfect = RobotcovidAgentState.listaEsq.get(infectados.get(index));
 							
-							InterfaceUpdater.simulacionActual.agregarInfectado(esquinaInfect.getIdEsquina(),new Double(esquinaInfect.getxEsquina()), new Double(esquinaInfect.getyEsquina()));
+							if(index<RobotcovidAgentState.CANTIDAD_SENSORES) {
+								//Estos son sensores
+								InterfaceUpdater.simulacionActual.agregarSensor(esquinaInfect.getIdEsquina(),new Double(esquinaInfect.getxEsquina()), new Double(esquinaInfect.getyEsquina()));
+							}
+							else {
+								//Estos son infectados que se mueven
+								InterfaceUpdater.simulacionActual.agregarInfectado(esquinaInfect.getIdEsquina(),new Double(esquinaInfect.getxEsquina()), new Double(esquinaInfect.getyEsquina()));
+							}
 						}
 					}
 				});
