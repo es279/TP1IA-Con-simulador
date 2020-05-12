@@ -5,6 +5,7 @@
  */
 package utn.ia2020.tp.busquedainfectados;
 
+import java.awt.ScrollPane;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -156,7 +157,11 @@ public class MapDrawerController implements Initializable {
         this.panDrawer.getChildren().add(bloqueo);
     }
     
-    
+    public void gameOver() {
+    	ImageView gameOver = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/game_over.png"));
+    	gameOver.relocate(165, 375);
+        this.panDrawer.getChildren().add(gameOver);
+    }
     
     @FXML
     public void testFunction() {

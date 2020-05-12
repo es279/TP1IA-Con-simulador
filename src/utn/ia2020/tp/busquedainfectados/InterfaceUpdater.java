@@ -24,6 +24,21 @@ public class InterfaceUpdater {
 		}
 	}
 	
+	public static void agregarInfectado(Esquina esquinaCapturado) {
+		Thread thre = new Thread() {
+			public void run(){
+				Platform.runLater(new Runnable(){
+					@Override
+					public void run() {
+						simulacionActual.agregarInfectado(esquinaCapturado.getIdEsquina(),new Double(esquinaCapturado.getxEsquina()), new Double(esquinaCapturado.getyEsquina()));
+						
+					}
+				});
+			}
+		};
+		thre.start();
+	}
+	
 	public static void borrarInfectado(Esquina esquinaInfect) {
 		Thread thre = new Thread() {
 			public void run(){
@@ -142,6 +157,21 @@ public class InterfaceUpdater {
 		thre.start();
 	}
 
+	public static void agregarGameOver() {
+		Thread thre = new Thread() {
+			public void run(){
+				Platform.runLater(new Runnable(){
+					@Override
+					public void run() {
+						simulacionActual.gameOver();
+						
+					}
+				});
+			}
+		};
+		thre.start();
+	}
+	
 	public static MapDrawerController getSimulacionActual() {
 		return simulacionActual;
 	}

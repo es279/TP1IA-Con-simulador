@@ -93,7 +93,7 @@ public class capturarInfectado extends SearchAction {
         	
         	
         	if(agentState.getListaInfectados().isEmpty()) {
-
+        		InterfaceUpdater.agregarGameOver();
         		agentState.setEnBusqueda(false);
         	}
         	

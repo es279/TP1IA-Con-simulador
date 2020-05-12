@@ -6,6 +6,7 @@ import java.util.Random;
 
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
+import frsf.cidisi.faia.state.EnvironmentState;
 import utn.ia2020.tp.busquedainfectados.InterfaceUpdater;
 
 public class RobotcovidAgentState extends SearchBasedAgentState {
@@ -13,6 +14,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	public static int contadorDePasos = 0;
 	public final static int FRECUENCIA_DESP_INFECT = 4;
 	public static int CANTIDAD_SENSORES = 0; 
+	public static Double PROBABILIDAD_NUEVO_INFECTADO = 0.02;
 
 	//Lista de esquinas donde se encuentran los infectados y sensores activos
 	public ArrayList<Integer> listaInfectados = cargarInfectados();
@@ -25,6 +27,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 		ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 		
 		listaInfectados.add(3);
+		listaInfectados.add(40);
 		listaInfectados.add(12);
 		listaInfectados.add(24);
 		
@@ -317,28 +320,28 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        {"26", "36", "17"},
 	        
 	        
-	        {"27", "18", "37"},
-	        {"28", "27"},
-	        {"29", "28"},
-	        {"30", "19", "29"},
-	        {"31", "30"},
-	        {"32", "31", "21"},
-	        {"33", "32"},
-	        {"34", "23", "33"},
-	        {"35", "34"},
-	        {"36", "26"},
-	        
-	        
 //	        {"27", "18", "37"},
 //	        {"28", "27"},
-//	        {"29", "44", "28"},
+//	        {"29", "28"},
 //	        {"30", "19", "29"},
-//	        {"31", "38", "30"},
+//	        {"31", "30"},
 //	        {"32", "31", "21"},
-//	        {"33", "40", "32"},
+//	        {"33", "32"},
 //	        {"34", "23", "33"},
-//	        {"35", "50", "34"},
-//	        {"36", "26", "51"},
+//	        {"35", "34"},
+//	        {"36", "26"},
+	        
+	        
+	        {"27", "18", "37"},
+	        {"28", "27"},
+	        {"29", "44", "28"},
+	        {"30", "19", "29"},
+	        {"31", "38", "30"},
+	        {"32", "31", "21"},
+	        {"33", "40", "32"},
+	        {"34", "23", "33"},
+	        {"35", "50", "34"},
+	        {"36", "26", "51"},
 	        {"37", "30", "38"},
 	        {"38", "46", "39", "37"},
 	        {"39", "32", "38"},
@@ -687,6 +690,16 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 			random = new Random().ints(0, sucesores.size()).iterator().nextInt();
 			if(random != sucesores.size())
 				listaInfectados.set(index, Integer.parseInt(sucesores.get(random)));
+		}
+	}
+	
+	public void randomNuevoInfectado(RobotcovidEnvironmentState environmentState) {
+		Integer random = new Random().ints(0, 100).iterator().nextInt();
+		if(random <= RobotcovidAgentState.PROBABILIDAD_NUEVO_INFECTADO*100) {
+			Integer rand = new Random().ints(0, listaEsq.size()-1).iterator().nextInt();
+			listaInfectados.add(rand);
+			environmentState.listaInfectados.add(rand);
+			InterfaceUpdater.agregarInfectado(RobotcovidAgentState.listaEsq.get(rand));
 		}
 	}
 	

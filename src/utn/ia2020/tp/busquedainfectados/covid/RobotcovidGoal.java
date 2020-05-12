@@ -1,6 +1,7 @@
 package utn.ia2020.tp.busquedainfectados.covid;
 
 import frsf.cidisi.faia.state.AgentState;
+import utn.ia2020.tp.busquedainfectados.InterfaceUpdater;
 import frsf.cidisi.faia.agent.search.GoalTest;
 
 public class RobotcovidGoal extends GoalTest {
@@ -16,6 +17,6 @@ public class RobotcovidGoal extends GoalTest {
 //            return (((RobotcovidAgentState) agentState).getEnBusqueda() == false || ((RobotcovidAgentState) agentState).getPosition().equals("20"));
   
 //			  return (((RobotcovidAgentState) agentState).getEnBusqueda() == false ||  ((RobotcovidAgentState) agentState).getPosition().equals("27"));
-			  return (((RobotcovidAgentState) agentState).getListaInfectados().size() == 0);
+			  return (((RobotcovidAgentState) agentState).getListaInfectados().size() == 0); 
     }
 }

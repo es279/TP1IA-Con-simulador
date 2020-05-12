@@ -74,6 +74,10 @@ public class irEsquina extends SearchAction {
     	RobotcovidAgentState agentState = (RobotcovidAgentState) ast;
     	RobotcovidEnvironmentState environmentState = (RobotcovidEnvironmentState) est;
     	
+    	
+    	//Añade nuevo infectado con una probabilidad de RobotcovidAgentState.PROBABILIDAD_NUEVO_INFECTADO
+		agentState.randomNuevoInfectado(environmentState);
+    	
     	RobotcovidAgentState.contadorDePasos++;
     	if(RobotcovidAgentState.contadorDePasos == RobotcovidAgentState.FRECUENCIA_DESP_INFECT) {
     		agentState.randomPosicionInfectados();
@@ -100,7 +104,7 @@ public class irEsquina extends SearchAction {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}*/
-                
+
                 
                 return est;
             }
