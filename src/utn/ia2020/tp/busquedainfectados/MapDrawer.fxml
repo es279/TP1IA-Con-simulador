@@ -25,7 +25,7 @@
       </ScrollPane>
       <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="100.0" VBox.vgrow="NEVER">
          <children>
-            <Button mnemonicParsing="false" onAction="#testFunction" text="Testear la arañita" />
+            <Button fx:id="btnRunSimulator" mnemonicParsing="false" onAction="#testFunction" text="Testear la arañita" />
          </children></HBox>
    </children>
 </VBox>

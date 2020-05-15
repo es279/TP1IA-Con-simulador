@@ -20,6 +20,7 @@ import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -36,6 +37,8 @@ public class MapDrawerController implements Initializable {
     private Pane panDrawer;
     @FXML
     private ImageView imgMap;
+    @FXML
+    private Button btnRunSimulator;
     
     final int AGENT_IMG_H = 54;
     final int AGENT_IMG_W = 54;
@@ -157,14 +160,23 @@ public class MapDrawerController implements Initializable {
         this.panDrawer.getChildren().add(bloqueo);
     }
     
-    public void gameOver() {
-    	ImageView gameOver = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/game_over.png"));
+    public void pintarYouLose() {
+    	ImageView gameOver = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/game_over_lose.png"));
     	gameOver.relocate(165, 375);
         this.panDrawer.getChildren().add(gameOver);
+        btnRunSimulator.setDisable(false);
+    }
+    
+    public void pintarYouWin() {
+    	ImageView gameOver = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/game_over_win.png"));
+    	gameOver.relocate(314, 275);
+        this.panDrawer.getChildren().add(gameOver);
+        btnRunSimulator.setDisable(false);
     }
     
     @FXML
     public void testFunction() {
+    	btnRunSimulator.setDisable(true);
     	InterfaceUpdater.setSimulacionActual(this);
     	
     	//Comienza la ejecución de la búsqueda en un hilo secundario para no trabar la simulación de la interface

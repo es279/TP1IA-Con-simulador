@@ -157,13 +157,16 @@ public class InterfaceUpdater {
 		thre.start();
 	}
 
-	public static void agregarGameOver() {
+	public static void agregarGameOver(boolean win) {
 		Thread thre = new Thread() {
 			public void run(){
 				Platform.runLater(new Runnable(){
 					@Override
 					public void run() {
-						simulacionActual.gameOver();
+						if(win)
+							simulacionActual.pintarYouWin();
+						else
+							simulacionActual.pintarYouLose();
 						
 					}
 				});
