@@ -26,10 +26,10 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	private static ArrayList<Integer> cargarInfectados() {
 		ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 		
-		listaInfectados.add(3);
-		listaInfectados.add(40);
-		listaInfectados.add(12);
-		listaInfectados.add(24);
+		//listaInfectados.add(3);
+		listaInfectados.add(120);
+		//listaInfectados.add(12);
+		//listaInfectados.add(24);
 		
 		return listaInfectados;
 	}
@@ -315,9 +315,9 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        {"21", "12", "22", "20"},
 	        {"22", "33", "23", "21"},
 	        {"23", "14", "24", "22"},
-	        {"24", "25", "23"},
+	        {"24", "25", "23", "35"},
 	        {"25", "16", "26", "24"},
-	        {"26", "36", "17"},
+	        {"26", "25", "36", "17"},
 	        
 	        
 //	        {"27", "18", "37"},
@@ -332,7 +332,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 //	        {"36", "26"},
 	        
 	        
-	        {"27", "18", "37"},
+	        {"27", "18", "42"},
 	        {"28", "27"},
 	        {"29", "44", "28"},
 	        {"30", "19", "29"},
@@ -348,15 +348,15 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        {"40", "48", "41"},
 	        {"41", "34", "40"},
 	        {"42", "27", "52", "43"},
-	        {"43", "28", "53", "44"},
-	        {"44", "54", "45"},
+	        {"43", "28", "44"},
+	        {"44", "56", "45"},
 	        {"45", "37", "46"},
-	        {"46", "56", "47"},
+	        {"46", "58", "47"},
 	        {"47", "39", "48"},
-	        {"48", "58", "49"},
+	        {"48", "60", "49"},
 	        {"49", "41", "50"},
-	        {"50", "60", "51"},
-	        {"51", "36", "61"},
+	        {"50", "62", "51"},
+	        {"51", "36", "63"},
 	        {"52", "53", "54", "42"},
 	        {"53", "64", "52"},
 	        {"54", "65", "53"},
@@ -420,8 +420,8 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        {"112", "122", "111"},
 	        {"113", "112", "101"},
 	        {"114", "115", "124"},
-	        {"115", "114", "104", "116"},
-	        {"116", "115", "105", "126"},
+	        {"115", "104", "116"},
+	        {"116", "105", "126"},
 	        {"117", "106", "131"},
 	        {"118", "132", "117"},
 	        {"119", "108", "118"},
@@ -431,7 +431,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        {"123", "113", "122"},
 	        {"124", "129", "123"},
 	        {"125", "115", "124"},
-	        {"126", "116", "140"},
+	        {"126", "116", "125", "140"},
 	        {"127", "128", "136"},
 	        {"128", "123"},
 	        {"129", "130", "138"},
@@ -456,7 +456,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        {"148", "158", "147"},
 	        {"149", "139", "148"},
 	        {"150", "140", "160", "149"},
-	        {"151", "152"},
+	        {"151", "152", "141"},
 	        {"152", "153"},
 	        {"153", "143", "154"},
 	        {"154", "155"},

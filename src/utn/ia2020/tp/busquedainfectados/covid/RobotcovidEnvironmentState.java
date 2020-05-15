@@ -50,13 +50,13 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 			ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 			
 			//Seteamos los sensores activados al principio de la lista
-			listaInfectados.add(3);
-			listaInfectados.add(40);
+			//listaInfectados.add(3);
+			listaInfectados.add(120);
 			RobotcovidAgentState.CANTIDAD_SENSORES = listaInfectados.size();
 			
 			//Seteamos los infectados (móviles)
-			listaInfectados.add(12);
-			listaInfectados.add(24);
+			//listaInfectados.add(12);
+			//listaInfectados.add(24);
 			
 			//TODO: Interface. Pinta los infectados en la interface de simulacion
 			InterfaceUpdater.repaintUbicacionInfectados(listaInfectados);
@@ -245,7 +245,7 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 
 	    public static final String[][] POSITIONS = new String[][]{
 	    	
-	    	{"0", "1", "9"},
+        	{"0", "1", "9"},
 	        {"1", "2"},
 	        {"2", "3", "11"},
 	        {"3", "4"},
@@ -269,10 +269,24 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 	        {"21", "12", "22", "20"},
 	        {"22", "33", "23", "21"},
 	        {"23", "14", "24", "22"},
-	        {"24", "25", "23"},
+	        {"24", "25", "23", "35"},
 	        {"25", "16", "26", "24"},
-	        {"26", "35", "17"},
-	        {"27", "18", "37"},
+	        {"26", "25", "36", "17"},
+	        
+	        
+//	        {"27", "18", "37"},
+//	        {"28", "27"},
+//	        {"29", "28"},
+//	        {"30", "19", "29"},
+//	        {"31", "30"},
+//	        {"32", "31", "21"},
+//	        {"33", "32"},
+//	        {"34", "23", "33"},
+//	        {"35", "34"},
+//	        {"36", "26"},
+	        
+	        
+	        {"27", "18", "42"},
 	        {"28", "27"},
 	        {"29", "44", "28"},
 	        {"30", "19", "29"},
@@ -288,15 +302,15 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 	        {"40", "48", "41"},
 	        {"41", "34", "40"},
 	        {"42", "27", "52", "43"},
-	        {"43", "28", "53", "44"},
-	        {"44", "54", "45"},
+	        {"43", "28", "44"},
+	        {"44", "56", "45"},
 	        {"45", "37", "46"},
-	        {"46", "56", "47"},
+	        {"46", "58", "47"},
 	        {"47", "39", "48"},
-	        {"48", "58", "49"},
+	        {"48", "60", "49"},
 	        {"49", "41", "50"},
-	        {"50", "60", "51"},
-	        {"51", "36", "61"},
+	        {"50", "62", "51"},
+	        {"51", "36", "63"},
 	        {"52", "53", "54", "42"},
 	        {"53", "64", "52"},
 	        {"54", "65", "53"},
@@ -360,8 +374,8 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 	        {"112", "122", "111"},
 	        {"113", "112", "101"},
 	        {"114", "115", "124"},
-	        {"115", "114", "104", "116"},
-	        {"116", "115", "105", "126"},
+	        {"115", "104", "116"},
+	        {"116", "105", "126"},
 	        {"117", "106", "131"},
 	        {"118", "132", "117"},
 	        {"119", "108", "118"},
@@ -371,7 +385,7 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 	        {"123", "113", "122"},
 	        {"124", "129", "123"},
 	        {"125", "115", "124"},
-	        {"126", "116", "140"},
+	        {"126", "116", "125", "140"},
 	        {"127", "128", "136"},
 	        {"128", "123"},
 	        {"129", "130", "138"},
@@ -396,7 +410,7 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 	        {"148", "158", "147"},
 	        {"149", "139", "148"},
 	        {"150", "140", "160", "149"},
-	        {"151", "152"},
+	        {"151", "152", "141"},
 	        {"152", "153"},
 	        {"153", "143", "154"},
 	        {"154", "155"},
@@ -408,8 +422,8 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 	        {"160", "150"},
 	        {"161", "29", "18", "19"},
 	        
-	        
-	    };
+	        			        
+        };
 
 	    RobotcovidEnvironmentState() {
 	        map = new HashMap<String, Collection<String>>();
