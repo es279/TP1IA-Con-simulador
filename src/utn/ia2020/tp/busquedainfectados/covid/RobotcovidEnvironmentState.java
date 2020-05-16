@@ -51,7 +51,8 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 			
 			//Seteamos los sensores activados al principio de la lista
 			//listaInfectados.add(3);
-			listaInfectados.add(120);
+			//listaInfectados.add(12);
+			listaInfectados.add(30);
 			RobotcovidAgentState.CANTIDAD_SENSORES = listaInfectados.size();
 			
 			//Seteamos los infectados (móviles)

@@ -11,9 +11,12 @@ import frsf.cidisi.faia.agent.search.SearchAction;
 import frsf.cidisi.faia.agent.search.SearchBasedAgent;
 import frsf.cidisi.faia.solver.search.AStarSearch;
 import frsf.cidisi.faia.solver.search.BreathFirstSearch;
+import frsf.cidisi.faia.solver.search.DepthFirstSearch;
 import frsf.cidisi.faia.solver.search.IEstimatedCostFunction;
 import frsf.cidisi.faia.solver.search.IStepCostFunction;
 import frsf.cidisi.faia.solver.search.Search;
+import frsf.cidisi.faia.solver.search.UniformCostSearch;
+import utn.ia2020.tp.busquedainfectados.GestorConfiguración;
 import utn.ia2020.tp.busquedainfectados.covid.actions.*;
 
 public class RobotcovidAgent extends SearchBasedAgent {
@@ -214,20 +217,38 @@ public class RobotcovidAgent extends SearchBasedAgent {
 
     @Override
     public Action selectAction() {
-        // Breath first strategy
-    	//Si no funciona, devolver próxima línea
-/*        BreathFirstSearch searchStrategy = new BreathFirstSearch();*/
-//        DepthFirstSearch searchStrategy = new DepthFirstSearch();
-//        Search searchSolver = new Search(searchStrategy);
-    	
-    	//A Star Search:
-            IStepCostFunction cost = new CostFunction();
-            IEstimatedCostFunction heuristic = new Heuristic();
-            AStarSearch strategy = new AStarSearch(cost, heuristic);
-            Search searchSolver = new Search(strategy);
+    	//La estrategia se elige en la interface
+    	Search searchSolver;
+    	switch(GestorConfiguración.estrategia) {
+    		case AMPLITUD:
+    			// Breath first strategy (búsqueda en amplitud)
+    			BreathFirstSearch searchStrategy1 = new BreathFirstSearch();
+    			searchSolver = new Search(searchStrategy1);
+    			break;
+    		case COSTO_UNIFORME:
+    			// Uniform cost strategy (búsqueda de costo uniforme)
+    			IStepCostFunction stepCost = new RobotcovidStepCost();
+    			UniformCostSearch searchStrategy2 = new UniformCostSearch(stepCost);
+    			searchSolver = new Search(searchStrategy2);
+    			break;
+    		case PROFUNDIDAD:
+    			// Depth first strategy (búsqueda en profundidad)
+    			DepthFirstSearch searchStrategy3 = new DepthFirstSearch();
+    			searchSolver = new Search(searchStrategy3);
+    			break;
+    		case ASTAR:
+    		default:
+    			//A Star Search (is default):
+    			IStepCostFunction cost = new CostFunction();
+                IEstimatedCostFunction heuristic = new Heuristic();
+                AStarSearch searchStrategy4 = new AStarSearch(cost, heuristic);
+                searchSolver = new Search(searchStrategy4);
+                break;
+    	}        
 
+    	
         // Set the search tree to be written in an XML file
-        searchSolver.setVisibleTree(Search.GRAPHVIZ_TREE);
+        searchSolver.setVisibleTree(Search.XML_TREE);
 
         // Set the search solver
         this.setSolver(searchSolver);

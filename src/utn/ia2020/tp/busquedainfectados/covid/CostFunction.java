@@ -87,10 +87,11 @@ public class CostFunction implements IStepCostFunction {
     	}
 //    	System.out.println("Theta: "+theta);
     		
-    	costo += theta*(100/180);
+    	costo += theta*(100.0/180.0);
     		
 //    	System.out.println("Final---------------------------");
 //    	double costo = 0.0;
+    	System.out.println(esquina1+"-->"+esquina2+"; Dist:="+longitud+"; Theta="+theta+"; Costo="+costo);
     	return costo;
     	//return ((RobotcovidAgentState) node.getAgentState()).getListaInfectados().size();
     	//return ((RobotcovidAgentState) node.getAgentState()).getLongCamino();

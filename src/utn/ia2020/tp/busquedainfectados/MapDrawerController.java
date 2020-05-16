@@ -17,10 +17,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -39,6 +43,12 @@ public class MapDrawerController implements Initializable {
     private ImageView imgMap;
     @FXML
     private Button btnRunSimulator;
+    @FXML
+    private ComboBox<EnumEstrategia> cbEstrategia;
+    @FXML
+    private CheckBox cbInfectMovimRandom;
+    @FXML
+    private CheckBox cbAgregarInfectRandom;
     
     final int AGENT_IMG_H = 54;
     final int AGENT_IMG_W = 54;
@@ -72,6 +82,8 @@ public class MapDrawerController implements Initializable {
             this.agent.setFitHeight(AGENT_IMG_H);
             this.moverAgent(0.0, 0.0);
             this.panDrawer.getChildren().add(agent);
+            ObservableList <EnumEstrategia> listaEstrategias = FXCollections.observableArrayList(EnumEstrategia.values());
+            this.cbEstrategia.setItems(listaEstrategias);
         }
         catch(Exception e){
             //TODO: mostrar ventana advirtiendo que no se encontrÃ³ la imagen del agente
@@ -176,8 +188,14 @@ public class MapDrawerController implements Initializable {
     
     @FXML
     public void testFunction() {
+    	//Configura interface
     	btnRunSimulator.setDisable(true);
     	InterfaceUpdater.setSimulacionActual(this);
+    	
+    	//Guarda opciones seleccionadas en la interface
+    	GestorConfiguración.estrategia = cbEstrategia.getValue();
+    	GestorConfiguración.agregarAleatoriamenteInfectados = cbAgregarInfectRandom.isSelected();
+    	GestorConfiguración.desplazamientoAleatorioInfectados = cbInfectMovimRandom.isSelected();
     	
     	//Comienza la ejecución de la búsqueda en un hilo secundario para no trabar la simulación de la interface
     	Thread thre = new Thread() {
@@ -194,33 +212,4 @@ public class MapDrawerController implements Initializable {
         thre.start();
     }
     
-    private int cont=0;
-    @FXML
-    public void atestFunction() {
-        //try{
-        switch(cont){
-            case 0:
-                agregarInfectado(1,228.0, 1034.0);
-                break;
-            case 1:
-                moverAgent(108.0, 0.0);
-                break;
-            case 2:
-                moverAgent(108.0, 110.0);
-                break;
-            case 3:
-                moverAgent(107.0, 208.0);
-                break;
-            case 4:
-                moverAgent(210.0, 210.0);
-                borrarInfectados();
-                agregarInfectado(1,226.0, 939.0);
-                break;
-        }
-        cont++;
-        /*}
-        catch(InterruptedException e){
-            System.out.println("Y se marchÃ³!");
-        }*/
-    }
 }

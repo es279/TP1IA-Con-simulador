@@ -70,7 +70,6 @@ public class irEsquina extends SearchAction {
 //        this.execute((SearchBasedAgentState) ast);
 //
 //        return null;
-        
     	RobotcovidAgentState agentState = (RobotcovidAgentState) ast;
     	RobotcovidEnvironmentState environmentState = (RobotcovidEnvironmentState) est;
     	

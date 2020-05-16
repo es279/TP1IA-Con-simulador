@@ -7,6 +7,7 @@ import java.util.Random;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 import frsf.cidisi.faia.state.EnvironmentState;
+import utn.ia2020.tp.busquedainfectados.GestorConfiguración;
 import utn.ia2020.tp.busquedainfectados.InterfaceUpdater;
 
 public class RobotcovidAgentState extends SearchBasedAgentState {
@@ -27,9 +28,9 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 		ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 		
 		//listaInfectados.add(3);
-		listaInfectados.add(120);
+		//listaInfectados.add(120);
 		//listaInfectados.add(12);
-		//listaInfectados.add(24);
+		listaInfectados.add(30);
 		
 		return listaInfectados;
 	}
@@ -681,25 +682,37 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 		this.listaBloqueosConocidos = listaBloqueosConocidos;
 	}
 	
+	/**
+	 * Mueve los infectados a esquinas cercanas (exceptúa a los sensores, que se encuentran al inicio de la lista de infectados)
+	 * Cada infectado también tiene la posibilidad (al "azar") de quedarse en la misma esquina
+	 */
 	public void randomPosicionInfectados() {
-		for(int index = RobotcovidAgentState.CANTIDAD_SENSORES; index < listaInfectados.size(); index++) {
-			System.out.println("index: " + index + "; elemento: " + listaInfectados.get(index)+" ; sice: "+RobotcovidAgentState.knownMap.size());
-			ArrayList<String> sucesores = new ArrayList<String>( knownMap.get(listaInfectados.get(index).toString()) );
-			System.out.println("sucesor sice: "+ sucesores.size());
-			Integer random = 0;
-			random = new Random().ints(0, sucesores.size()).iterator().nextInt();
-			if(random != sucesores.size())
-				listaInfectados.set(index, Integer.parseInt(sucesores.get(random)));
+		if(GestorConfiguración.desplazamientoAleatorioInfectados) {
+			for(int index = RobotcovidAgentState.CANTIDAD_SENSORES; index < listaInfectados.size(); index++) {
+				System.out.println("index: " + index + "; elemento: " + listaInfectados.get(index)+" ; sice: "+RobotcovidAgentState.knownMap.size());
+				ArrayList<String> sucesores = new ArrayList<String>( knownMap.get(listaInfectados.get(index).toString()) );
+				System.out.println("sucesor sice: "+ sucesores.size());
+				Integer random = 0;
+				random = new Random().ints(0, sucesores.size()).iterator().nextInt();
+				if(random != sucesores.size())
+					listaInfectados.set(index, Integer.parseInt(sucesores.get(random)));
+			}
 		}
 	}
 	
+	/**
+	 * Añade nuevos infectados en esquinas aleatorias del mapa en tiempo de ejecución
+	 * La probabilidad de que se agregue un nuevo infectado está dado por "RobotcovidAgentState.PROBABILIDAD_NUEVO_INFECTADO"
+	 */
 	public void randomNuevoInfectado(RobotcovidEnvironmentState environmentState) {
-		Integer random = new Random().ints(0, 100).iterator().nextInt();
-		if(random <= RobotcovidAgentState.PROBABILIDAD_NUEVO_INFECTADO*100) {
-			Integer rand = new Random().ints(0, listaEsq.size()-1).iterator().nextInt();
-			listaInfectados.add(rand);
-			environmentState.listaInfectados.add(rand);
-			InterfaceUpdater.agregarInfectado(RobotcovidAgentState.listaEsq.get(rand));
+		if(GestorConfiguración.agregarAleatoriamenteInfectados) {
+			Integer random = new Random().ints(0, 100).iterator().nextInt();
+			if(random <= RobotcovidAgentState.PROBABILIDAD_NUEVO_INFECTADO*100) {
+				Integer rand = new Random().ints(0, listaEsq.size()-1).iterator().nextInt();
+				listaInfectados.add(rand);
+				environmentState.listaInfectados.add(rand);
+				InterfaceUpdater.agregarInfectado(RobotcovidAgentState.listaEsq.get(rand));
+			}
 		}
 	}
 	
