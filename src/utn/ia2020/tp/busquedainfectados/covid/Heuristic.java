@@ -25,7 +25,7 @@ public class Heuristic implements IEstimatedCostFunction {
     		
     		heuristica += Math.abs(xAgente-xInfec)+Math.abs(yAgente-yInfec);
     	}
-//    	System.out.println("Heurística: "+heuristica);
+    	
     	return heuristica;
     }
 }

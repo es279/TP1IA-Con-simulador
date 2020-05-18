@@ -17,14 +17,14 @@ import javafx.stage.Stage;
  * @author usuario
  */
 public class busquedainfectados extends Application {
-    
+    private Scene scene;
     
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MapDrawer.fxml"));
         Parent root = loader.load();
         
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
@@ -35,6 +35,13 @@ public class busquedainfectados extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    //Indica que cuando se cierre la ventana se termine el hilo de búsqueda 
+    @Override
+    public void stop(){
+        System.out.println("Stage is closing");
+        MapDrawerController.closeSearchThread();
     }
     
 }

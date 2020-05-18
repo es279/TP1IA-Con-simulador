@@ -16,6 +16,7 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 		//Lista de bloqueos del ambiente
 		public ArrayList<Integer[]> listaBloqueos = cargarBloqueos();
 		
+		
 		//TODO cambiar esta lista de bloqueos (pone un bloqueo entre 2 y 3)
 				private ArrayList<Integer[]> cargarBloqueos() {
 					ArrayList<Integer[]> listaBloqueos = new ArrayList<Integer[]>();
@@ -30,11 +31,16 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 					//listaBloqueos.add(vec1);
 					
 					Integer[] vec2 = new Integer[2];
-					vec2[0]=21;
-					vec2[1]=12;
-					//listaBloqueos.add(vec2);
+					vec2[0]=1;
+					vec2[1]=2;
+					listaBloqueos.add(vec2);
 					
-					//TODO: Interface. Pinta los bloqueos en la interface de simulacion
+					Integer[] vec3 = new Integer[2];
+					vec3[0]=2;
+					vec3[1]=11;
+					//listaBloqueos.add(vec3);
+					
+					//TODO: Interface. Pinta los bloqueos en la interface de simulación
 					for(Integer[] bloqueo : listaBloqueos) {
 						InterfaceUpdater.agregarBloqueoDesconocido(bloqueo[0], bloqueo[1]);
 					}
@@ -50,14 +56,12 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 			ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 			
 			//Seteamos los sensores activados al principio de la lista
-			//listaInfectados.add(3);
-			//listaInfectados.add(12);
-			listaInfectados.add(30);
+			listaInfectados.add(11);
+			listaInfectados.add(12);
 			RobotcovidAgentState.CANTIDAD_SENSORES = listaInfectados.size();
 			
 			//Seteamos los infectados (móviles)
-			//listaInfectados.add(12);
-			//listaInfectados.add(24);
+			//listaInfectados.add(20);
 			
 			//TODO: Interface. Pinta los infectados en la interface de simulacion
 			InterfaceUpdater.repaintUbicacionInfectados(listaInfectados);
@@ -428,6 +432,7 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 
 	    RobotcovidEnvironmentState() {
 	        map = new HashMap<String, Collection<String>>();
+	        initState();
 	    }
 
 	    @Override
@@ -558,7 +563,6 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 			 for(Integer[] bloqueo : this.listaBloqueos) {
 				 if((bloqueo[0] == Integer.parseInt(this.agentPosition)) || (bloqueo[1] == Integer.parseInt(this.agentPosition))) {
 					 lista.add(bloqueo);
-					 System.out.println("Agregado nuevo bloqueo asndaksndascacona");
 				 }
 			 }
 			 

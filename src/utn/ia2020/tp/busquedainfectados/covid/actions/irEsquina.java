@@ -84,7 +84,6 @@ public class irEsquina extends SearchAction {
     		//TODO: Interface.
     		InterfaceUpdater.repaintUbicacionInfectados(agentState.listaInfectados);
     	}
-    	System.out.println(",amsndlasnd"+est.toString());
     	
         ArrayList<String> successors = new ArrayList<String>(agentState.getSuccessors());
         if (successors != null) {

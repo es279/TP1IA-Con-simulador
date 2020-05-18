@@ -11,7 +11,13 @@ public class RobotcovidStepCost implements IStepCostFunction {
 	
 	@Override
 	public double calculateCost(NTree node) {
-		return 1;
+		String accion = node.getAction().toString();
+	
+		if(accion.equals("capturarInfectado"))
+			return 0.0;
+		
+		CostFunction cost = new CostFunction();
+		return cost.calculateCost(node);
 	}
 
 }

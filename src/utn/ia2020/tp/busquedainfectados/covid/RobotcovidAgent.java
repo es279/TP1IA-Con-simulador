@@ -17,6 +17,7 @@ import frsf.cidisi.faia.solver.search.IStepCostFunction;
 import frsf.cidisi.faia.solver.search.Search;
 import frsf.cidisi.faia.solver.search.UniformCostSearch;
 import utn.ia2020.tp.busquedainfectados.GestorConfiguración;
+import utn.ia2020.tp.busquedainfectados.InterfaceUpdater;
 import utn.ia2020.tp.busquedainfectados.covid.actions.*;
 
 public class RobotcovidAgent extends SearchBasedAgent {
@@ -33,6 +34,7 @@ public class RobotcovidAgent extends SearchBasedAgent {
         // Robot agent actions
         Vector<SearchAction> actions = new Vector<SearchAction>();
         
+        //Acciones del agente
         actions.addElement(new capturarInfectado());
         
 
@@ -260,11 +262,16 @@ public class RobotcovidAgent extends SearchBasedAgent {
         } catch (Exception ex) {
             Logger.getLogger(RobotcovidAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        //Si no se encuentra la solución => muestra por pantalla
+        if(selectedAction==null)
+        	InterfaceUpdater.agregarGameOver(false);
+        
         // Return the selected action
         return selectedAction;
     }
 
+    //Recibe la percepción por parte del simulador
     @Override
     public void see(Perception perception) {
         this.getAgentState().updateState(perception);

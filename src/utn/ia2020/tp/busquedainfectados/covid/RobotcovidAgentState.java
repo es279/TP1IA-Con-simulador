@@ -16,6 +16,19 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	public final static int FRECUENCIA_DESP_INFECT = 4;
 	public static int CANTIDAD_SENSORES = 0; 
 	public static Double PROBABILIDAD_NUEVO_INFECTADO = 0.02;
+	
+    /**
+     * Actual agent position
+     */
+    String position = "2";
+    String lastPosition = "1";
+    int xAgente = 0;
+    int yAgente = 0;
+    Boolean EnBusqueda = true;
+    
+    //Contador de longitud total del camino:
+    int longCamino;
+
 
 	//Lista de esquinas donde se encuentran los infectados y sensores activos
 	public ArrayList<Integer> listaInfectados = cargarInfectados();
@@ -27,10 +40,9 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	private static ArrayList<Integer> cargarInfectados() {
 		ArrayList<Integer> listaInfectados = new ArrayList<Integer>();
 		
-		//listaInfectados.add(3);
-		//listaInfectados.add(120);
-		//listaInfectados.add(12);
-		listaInfectados.add(30);
+		listaInfectados.add(11);
+		listaInfectados.add(12);
+		//listaInfectados.add(20);
 		
 		return listaInfectados;
 	}
@@ -208,18 +220,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
     	return listaEsq;
     }
 
-    /**
-     * Actual agent position
-     */
-    String position = "1";
-    String lastPosition = "1";
-    int xAgente = 0;
-    int yAgente = 0;
-    Boolean EnBusqueda = true;
     
-    //Contador de longitud total del camino:
-    int longCamino;
-
     /**
      * This map has a point of the world (0, 1, 2, ...) as key, and a collection
      * of successors of that point.
@@ -243,29 +244,22 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
         newState.setTramosRecorridos(tramos);
         
         
-      //public ArrayList<Integer> listaInfectados = cargarInfectados();
         ArrayList<Integer> listaInfec = (ArrayList<Integer>) listaInfectados.clone();
         newState.setListaInfectados(listaInfec);
         
-        //String position = "1";
-//        newState.setPosition(position);
         
-        //int xAgente = 0;
         newState.setxAgente(xAgente);
-        
-        //int yAgente = 0;
         newState.setyAgente(yAgente);
         
         //Boolean EnBusqueda = true;
         newState.setEnBusqueda(EnBusqueda);
         
-        //int longCamino;
         newState.setLongCamino(longCamino);
         
         newState.setKnownMap(knownMap);
         
+        //Clona lista de bloqueos conocidos
         ArrayList<Integer[]> listaBlockConocidos = new ArrayList<Integer[]>();
-        
         for(Integer[] bloqueo : this.listaBloqueosConocidos) {
         	
         	Integer[] arreglo = new Integer[2];
@@ -279,11 +273,12 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
         return newState;
     }
 
+    //Setea valores de estado inicial del agente robot
     @Override
     public void initState() {
         position = "1";
-        xAgente = 108;
-        yAgente = 0;
+        xAgente = this.listaEsq.get(Integer.parseInt(position)).xEsquina;
+        yAgente = this.listaEsq.get(Integer.parseInt(position)).yEsquina;
         longCamino = 0;
         
         /**
@@ -472,6 +467,8 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
 	        			        
         };
 
+        // Convierte la lista de alcanzabilidad en un HashMap donde la clave es el nombre
+        // de la esquina y el campo son las esquinas adyacentes
         knownMap = new HashMap<String, Collection<String>>();
         for (int i = 0; i < positions.length; i++) {
             ArrayList<String> successors = new ArrayList<String>();
@@ -489,7 +486,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
     @Override
     public void updateState(Perception p) {
     	//Añade la posición actual a la lista de posiciones visitadas por el agente:
-//    	tramosRecorridos.add(position);
+    	
     	Boolean agregarTramo = true;
     	//No agrega el tramo si ya está en la lista (por ejemplo cuando se captura a un infectado)
     	for(String[] tramo: tramosRecorridos ) {
@@ -530,17 +527,13 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
         		InterfaceUpdater.agregarBloqueoConocido(elementoActual[0],elementoActual[1]);
         	}
         	
-//        	//TODO Prueba, sacar
-//        	this.listaBloqueosConocidos.add(elementoActual);
         }
         
     }
 
     @Override
     public String toString() {
-        String str = "Posicion: " + position;
-
-        return str;
+        return ("Posicion: " + position);
 
     }
     
@@ -587,11 +580,7 @@ public class RobotcovidAgentState extends SearchBasedAgentState {
         	return false; 
         }
         
-        
-        
-        
         return true;
-        
     }
 
     public String getPosition() {

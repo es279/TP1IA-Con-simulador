@@ -121,10 +121,7 @@ public class capturarInfectado extends SearchAction {
     	return  100.0;
     }
 
-    /**
-     * This method is not important for a search based agent, but is essensial
-     * when creating a calculus based one.
-     */
+    
     @Override
     public String toString() {
         return "capturarInfectado";
