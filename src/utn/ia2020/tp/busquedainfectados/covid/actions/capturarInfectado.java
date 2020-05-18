@@ -39,15 +39,6 @@ public class capturarInfectado extends SearchAction {
         }
         
         return null;
-
-        /*//Referencia
-        if (pacmanState.getWorld()[row][col] == PacmanPerception.FOOD_PERCEPTION) {
-            // If the action is Eat, then the actual position has no more food.
-            pacmanState.setWorldPosition(row, col, PacmanPerception.EMPTY_PERCEPTION);
-            return pacmanState;
-        }
-        
-        return null;*/
     }
 
     /**
@@ -101,15 +92,6 @@ public class capturarInfectado extends SearchAction {
         }
         
         return null;
-
-        /*//Referencia
-        if (pacmanState.getWorld()[row][col] == PacmanPerception.FOOD_PERCEPTION) {
-            // If the action is Eat, then the actual position has no more food.
-            pacmanState.setWorldPosition(row, col, PacmanPerception.EMPTY_PERCEPTION);
-            return pacmanState;
-        }
-        
-        return null;*/
     }
 
     /**

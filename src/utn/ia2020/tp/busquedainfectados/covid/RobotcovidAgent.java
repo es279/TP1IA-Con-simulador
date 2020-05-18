@@ -264,8 +264,12 @@ public class RobotcovidAgent extends SearchBasedAgent {
         }
         
         //Si no se encuentra la solución => muestra por pantalla
-        if(selectedAction==null)
+        if(selectedAction==null) {
         	InterfaceUpdater.agregarGameOver(false);
+        }
+        else if((selectedAction instanceof irEsquina) || (selectedAction instanceof capturarInfectado)) {
+        	InterfaceUpdater.agregarAccionALista(selectedAction.toString());
+        }
         
         // Return the selected action
         return selectedAction;

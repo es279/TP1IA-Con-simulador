@@ -33,12 +33,12 @@ public class RobotcovidEnvironmentState extends EnvironmentState {
 					Integer[] vec2 = new Integer[2];
 					vec2[0]=1;
 					vec2[1]=2;
-					listaBloqueos.add(vec2);
+					//listaBloqueos.add(vec2);
 					
 					Integer[] vec3 = new Integer[2];
 					vec3[0]=2;
 					vec3[1]=11;
-					//listaBloqueos.add(vec3);
+					listaBloqueos.add(vec3);
 					
 					//TODO: Interface. Pinta los bloqueos en la interface de simulación
 					for(Integer[] bloqueo : listaBloqueos) {

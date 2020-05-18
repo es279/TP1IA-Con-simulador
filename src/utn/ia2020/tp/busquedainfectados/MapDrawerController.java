@@ -18,6 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import frsf.cidisi.faia.simulator.SearchBasedAgentSimulator;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,9 +28,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import utn.ia2020.tp.busquedainfectados.covid.RobotcovidAgent;
 import utn.ia2020.tp.busquedainfectados.covid.RobotcovidEnvironment;
 
@@ -50,6 +59,13 @@ public class MapDrawerController implements Initializable {
     private CheckBox cbInfectMovimRandom;
     @FXML
     private CheckBox cbAgregarInfectRandom;
+    
+    @FXML
+    private TableView<AccionBusqueda> tvTablaAcciones;
+    @FXML
+    private TableColumn<AccionBusqueda,String> tcAcciones;
+    private ObservableList<AccionBusqueda> obsListAcciones;
+    
     public static Thread thre;
     
     //Tamaño de las imagenes
@@ -169,6 +185,11 @@ public class MapDrawerController implements Initializable {
         this.panDrawer.getChildren().add(bloqueo);
     }
     
+    /**Agrega un elemento a la lista de acciones**/
+    public void agregarAccionALista(String action) {
+    	obsListAcciones.add(new AccionBusqueda(action));
+    }
+    
     public void pintarYouLose() {
     	ImageView gameOver = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/game_over_lose.gif"));
     	gameOver.relocate(240, 275);
@@ -176,18 +197,20 @@ public class MapDrawerController implements Initializable {
         ImageView gameOverText = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/game_over_lose_text.png"));
         gameOverText.relocate(500, 175);
         this.panDrawer.getChildren().add(gameOverText);
-        btnRunSimulator.setDisable(false);		//TODO
     }
     
     public void pintarYouWin() {
     	ImageView gameOver = new ImageView(new Image("File:src/utn/ia2020/tp/busquedainfectados/resources/game_over_win.png"));
     	gameOver.relocate(314, 275);
         this.panDrawer.getChildren().add(gameOver);
-        btnRunSimulator.setDisable(false);		//TODO
     }
     
     @FXML
     public void testFunction() {
+    	obsListAcciones = FXCollections.observableArrayList();
+    	tvTablaAcciones.setItems(obsListAcciones);
+    	tcAcciones.setCellValueFactory(new PropertyValueFactory <AccionBusqueda, String>("nombre"));
+    	
     	//Guarda opciones seleccionadas en la interface
     	if(cbEstrategia.getValue() == null)
     		return;		//Para evitar que se ejecute una estrategia erronea => cancela ejecución
@@ -235,5 +258,28 @@ public class MapDrawerController implements Initializable {
     		thre.interrupt();
     	}
     }
+
+    /**
+     * Esta clase se usa únicamente para agregar elementos a la lista de acciones
+     */
+    public class AccionBusqueda{
+    	public String nombre;
+    	
+    	public AccionBusqueda() {}
+    	
+    	public AccionBusqueda(String name) {
+    		this.nombre = name;
+    	}
+    	
+    	public String getNombre() {
+    		return nombre;
+    	}
+    	
+    	public void setNombre(String str) {
+    		nombre = str;
+    	}
+    }
     
 }
+
+
